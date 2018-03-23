@@ -8,11 +8,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { NewsapiService } from './services/newsapi.service';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    HomeComponent,
+    PageNotFoundComponent
+  ],
   imports: [BrowserModule, NgbModule.forRoot(), AppRoutingModule],
-  providers: [],
+  providers: [NewsapiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
