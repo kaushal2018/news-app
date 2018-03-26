@@ -6,12 +6,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  themeVal: string = 'light';
+  isLightDisabled: boolean = true;
+  isDarkDisabled: boolean = false;
   @Output() themeValEvent = new EventEmitter<string>();
   constructor() {}
   changeTheme(val) {
-    this.themeVal = val;
-    this.themeValEvent.emit(this.themeVal);
+    if (val == 'light') {
+      this.isDarkDisabled = false;
+      this.isLightDisabled = true;
+    } else {
+      this.isLightDisabled = false;
+      this.isDarkDisabled = true;
+    }
+    this.themeValEvent.emit(val);
   }
   ngOnInit() {}
 }
