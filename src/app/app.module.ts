@@ -1,3 +1,4 @@
+import { DateTimeFormatPipe } from './pipe/datetimeformatpipe';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NewsapiService } from './services/newsapi.service';
 import { SummaryPipe } from './pipe/summary.pipe';
+import { DateFormatPipe } from './pipe/dateformatpipe';
 import { BusinessComponent } from './components/business/business.component';
 import { EntertainmentComponent } from './components/entertainment/entertainment.component';
 import { GeneralComponent } from './components/general/general.component';
@@ -32,6 +34,8 @@ import { SearchComponent } from './components/search/search.component';
     HomeComponent,
     PageNotFoundComponent,
     SummaryPipe,
+    DateFormatPipe,
+    DateTimeFormatPipe,
     BusinessComponent,
     EntertainmentComponent,
     GeneralComponent,
