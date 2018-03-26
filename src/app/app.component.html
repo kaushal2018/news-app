@@ -1,6 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-navbar></app-navbar>
 <div class="starter-template">
-  <router-outlet></router-outlet>
+  <div class="album py-5 bg-light" [ngClass]="{
+      'bg-light': isLight,
+      'bg-dark': isDark
+    }">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<app-footer></app-footer>
+<app-footer (themeValEvent)="receiveThemeValue($event)"></app-footer>

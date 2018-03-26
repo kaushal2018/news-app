@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  themeVal: string = 'light';
+  @Output() themeValEvent = new EventEmitter<string>();
+  constructor() {}
+  changeTheme(val) {
+    this.themeVal = val;
+    this.themeValEvent.emit(this.themeVal);
   }
-
+  ngOnInit() {}
 }

@@ -10,8 +10,21 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'app';
+  isLight: boolean = false;
+  isDark: boolean = false;
   constructor(private router: Router, private titleService: Title) {}
-
+  themeVal: string;
+  receiveThemeValue($event) {
+    this.themeVal = $event;
+    if (this.themeVal == 'light') {
+      this.isLight = true;
+      this.isDark = false;
+    }
+    if (this.themeVal == 'dark') {
+      this.isDark = true;
+      this.isLight = false;
+    }
+  }
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
