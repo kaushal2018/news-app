@@ -12,9 +12,9 @@
           <p class="card-text section1p">{{ newsitem.description | summary:130 }}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" (click)="redirectTo(newsitem.url)" class="btn btn-sm btn-outline-secondary">View</button>
             </div>
-            <small class="text-muted">{{ newsitem.publishedAt | dateFormat }}</small>
+            <small class="text-muted">{{ newsitem.publishedAt | date }} {{ newsitem.publishedAt | date:'shortTime' }}</small>
           </div>
         </div>
       </div>
@@ -29,9 +29,9 @@
           <p class="card-text section2p">{{ newsitem.description | summary:100 }}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" (click)="redirectTo(newsitem.url)" class="btn btn-sm btn-outline-secondary">View</button>
             </div>
-            <small class="text-muted">{{ newsitem.publishedAt | dateFormat }}</small>
+            <small class="text-muted">{{ newsitem.publishedAt | date }} {{ newsitem.publishedAt | date:'shortTime' }}</small>
           </div>
         </div>
       </div>
@@ -46,9 +46,9 @@
           <p class="card-text section3p">{{ newsitem.description | summary:100 }}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              <button type="button" (click)="redirectTo(newsitem.url)" class="btn btn-sm btn-outline-secondary">View</button>
             </div>
-            <small class="text-muted">{{ newsitem.publishedAt | dateFormat }}</small>
+            <small class="text-muted">{{ newsitem.publishedAt | date }} {{ newsitem.publishedAt | date:'shortTime' }}</small>
           </div>
         </div>
       </div>

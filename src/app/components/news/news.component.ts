@@ -93,5 +93,9 @@ export class NewsComponent {
     this.loading = false;
   }
 
+  redirectTo(url) {
+    window.open(url, '_blank');
+  }
+
   ngOnInit() {}
 }

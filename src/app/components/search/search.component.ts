@@ -37,6 +37,10 @@ export class SearchComponent implements OnInit {
     this.loading = false;
   }
 
+  redirectTo(url) {
+    window.open(url, '_blank');
+  }
+
   ngOnInit() {
     this.apiSerivce.currentSearch.subscribe(getSearchText => {
       this.getSearchText = getSearchText;
