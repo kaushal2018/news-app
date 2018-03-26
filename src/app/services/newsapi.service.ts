@@ -1,49 +1,65 @@
-import { NewsItem } from './../models/NewsItem';
+import { Injectable } from '@angular/core';
 import {
   HttpModule,
   Http,
+  Response,
   URLSearchParams,
   Headers,
   RequestOptions
 } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { INewsItem } from '../models/NewsItem';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class NewsapiService {
-  apiRoot: string = 'https://itunes.apple.com/search';
-  results: NewsItem[];
-  promise;
-  apiURL;
   constructor(private http: Http) {}
 
-  search(term: string) {
-    this.promise = new Promise((resolve, reject) => {
-      this.apiURL = `${this.apiRoot}?term=${term}&media=music&limit=10`;
-      this.http
-        .get(this.apiURL)
-        .toPromise()
-        .then(
-          res => {
-            // Success
-            // console.log(res.json());
-            // this.results = res.json().results;
-            this.results = res.json().results.map(item => {
-              // return new NewsItem(
-              // item.author,
-              // item.artistName,
-              // item.trackViewUrl,
-              // item.artworkUrl30,
-              // item.artistId
-              // );
-            });
-            resolve();
-          },
-          msg => {
-            // Error
-            reject(msg);
-          }
-        );
+  getData(apiURL) {
+    return this.http.get(apiURL).map(res => <INewsItem[]>res.json());
+  }
+
+  getlatestNewsResponse(apiURL) {
+    let latestNewsList: INewsItem[] = [];
+    let count = 0;
+    this.getData(apiURL).subscribe(data => {
+      data['articles'].forEach(element => {
+        if (element.urlToImage) {
+          count++;
+
+          if (count <= 2) latestNewsList.push(element);
+        }
+      });
     });
-    return this.promise;
+    return latestNewsList;
+  }
+
+  getSubsequentNewsResponse(apiURL) {
+    let subNewsList: INewsItem[] = [];
+    let count = 0;
+    this.getData(apiURL).subscribe(data => {
+      data['articles'].forEach(element => {
+        if (element.urlToImage) {
+          count++;
+
+          if (count > 2 && count <= 8) subNewsList.push(element);
+        }
+      });
+    });
+    return subNewsList;
+  }
+
+  getOtherNewsResponse(otherNewsApiURL) {
+    let otherNewsList: INewsItem[] = [];
+    let count = 0;
+    this.getData(otherNewsApiURL).subscribe(data => {
+      data['articles'].forEach(element => {
+        if (element.urlToImage) {
+          count++;
+
+          if (count <= 4) otherNewsList.push(element);
+        }
+      });
+    });
+    return otherNewsList;
   }
 }
