@@ -22,6 +22,7 @@ import { TechnologyComponent } from './components/technology/technology.componen
 import { UkComponent } from './components/uk/uk.component';
 import { UsComponent } from './components/us/us.component';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     SportsComponent,
     TechnologyComponent,
     UkComponent,
-    UsComponent
+    UsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

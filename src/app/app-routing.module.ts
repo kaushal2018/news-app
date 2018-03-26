@@ -12,6 +12,7 @@ import { GeneralComponent } from './components/general/general.component';
 import { UsComponent } from './components/us/us.component';
 import { UkComponent } from './components/uk/uk.component';
 import { InComponent } from './components/in/in.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'us', component: UsComponent },
   { path: 'uk', component: UkComponent },
   { path: 'in', component: InComponent },
+  { path: 'search', component: SearchComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

@@ -1,0 +1,57 @@
+<div class="text-center">
+  <p class="lead" *ngIf="loading">Loading...</p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let newsitem of _latestPostsArray;">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top section1img" src="{{newsitem.urlToImage}}" alt="Card image cap">
+        <div class="card-body">
+          <a target="_blank" class="section1a" href="{{newsitem.url}}">{{ newsitem.title.toUpperCase() | summary:200 }}
+          </a>
+          <p class="card-text section1p">{{ newsitem.description | summary:130 }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+            </div>
+            <small class="text-muted">{{ newsitem.publishedAt }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4" *ngFor="let newsitem of _subsequentPostsArray;">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top section2img" data-src="{{newsitem.urlToImage}}" alt="Card image cap">
+        <div class="card-body">
+          <a target="_blank" class="section2a" href="{{newsitem.url}}">{{ newsitem.title.toUpperCase() | summary:100 }}
+          </a>
+          <p class="card-text section2p">{{ newsitem.description | summary:100 }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+            </div>
+            <small class="text-muted">{{ newsitem.publishedAt }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3" *ngFor="let newsitem of _otherPostsArray;">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top section3img" data-src="{{newsitem.urlToImage}}" alt="Card image cap">
+        <div class="card-body">
+          <a target="_blank" class="section3a" href="{{newsitem.url}}">{{ newsitem.title.toUpperCase() | summary:50 }}
+          </a>
+          <p class="card-text section3p">{{ newsitem.description | summary:100 }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+            </div>
+            <small class="text-muted">{{ newsitem.publishedAt }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {
   HttpModule,
   Http,
@@ -12,6 +13,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class NewsapiService {
+  private inputSource = new BehaviorSubject<string>('news');
+  currentSearch = this.inputSource.asObservable();
   constructor(private http: Http) {}
 
   getData(apiURL) {
@@ -61,5 +64,9 @@ export class NewsapiService {
       });
     });
     return otherNewsList;
+  }
+
+  postSearchText(inputVal: string) {
+    this.inputSource.next(inputVal);
   }
 }
