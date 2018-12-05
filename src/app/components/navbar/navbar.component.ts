@@ -19,4 +19,9 @@ export class NavbarComponent implements OnInit {
   searchText(val) {
     this.apiSerivce.postSearchText(val);
   }
+
+  changeAction(obj) {
+    //your logic here
+    console.log(obj);
+  }
 }
